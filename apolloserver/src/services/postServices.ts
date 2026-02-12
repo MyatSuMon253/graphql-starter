@@ -1,5 +1,5 @@
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "../../generated/prisma/client.js";
+import { PrismaClient } from "../../generated/prisma/client.ts";
 
 const prisma = new PrismaClient({
   accelerateUrl: process.env.DATABASE_URL!,
