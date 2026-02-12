@@ -18,3 +18,18 @@ export const getPosts = async () => {
     },
   });
 };
+
+export const getPost = async (id: string) => {
+  return prisma.post.findUnique({
+    where: { id },
+    include: {
+      author: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+    },
+  });
+};

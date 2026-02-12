@@ -15,9 +15,17 @@ const typeDefs = gql(
   readFileSync(path.resolve(__dirname, "./graphql/schema.graphql"), "utf-8"),
 );
 
+interface MyContext {
+  token: string;
+}
+
 async function startApolloServer() {
-  const server = new ApolloServer({ typeDefs, resolvers });
-  const { url } = await startStandaloneServer(server);
+  const server = new ApolloServer<MyContext>({ typeDefs, resolvers });
+  const { url } = await startStandaloneServer(server, {
+    context: async ({ req, res }) => ({
+      token: req.headers.authorization || "",
+    }),
+  });
   console.log("server is running at: ", url);
 }
 
