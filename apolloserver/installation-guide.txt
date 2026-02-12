@@ -41,8 +41,8 @@ npx tsx script.ts
 npx prisma studio
 
 npm install -D concurrently @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-resolvers
-npm run generate
 npm install @parcel/watcher
+npm run generate
 
 *** Apollo client setup example ***
 
