@@ -1,42 +1,19 @@
+import "dotenv/config";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { readFileSync } from "fs";
+import path from "path";
+import { gql } from "graphql-tag";
+import { fileURLToPath } from "url";
 
-const Books = [
-  {
-    id: 1,
-    title: "The Awakening",
-    author: "Kate Chopin",
-    price: 9.99,
-    year: 1899,
-  },
-  {
-    id: 2,
-    title: "City of Glass",
-    author: "Paul Auster",
-    price: 12.99,
-    year: 1985,
-  },
-  { id: 3, title: "1984", author: "George Orwell", price: 14.99, year: 1949 },
-];
+import { resolvers } from "./graphql/resolvers.ts";
 
-const typeDefs = `#graphql
-type Book {
-  id: ID!
-  title: String!
-  author: String!
-  price: Float
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-type Query {
-  books: [Book]
-}
-`;
-
-const resolvers = {
-  Query: {
-    books: () => Books,
-  },
-};
+const typeDefs = gql(
+  readFileSync(path.resolve(__dirname, "./graphql/schema.graphql"), "utf-8"),
+);
 
 async function startApolloServer() {
   const server = new ApolloServer({ typeDefs, resolvers });
@@ -44,4 +21,4 @@ async function startApolloServer() {
   console.log("server is running at: ", url);
 }
 
-startApolloServer()
+startApolloServer();

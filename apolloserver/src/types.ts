@@ -58,11 +58,10 @@ export type Post = {
 };
 
 export type PostInput = {
-  __typename?: 'PostInput';
-  author: Scalars['ID']['output'];
-  content?: Maybe<Scalars['String']['output']>;
-  published: Scalars['Boolean']['output'];
-  title: Scalars['String']['output'];
+  author: Scalars['ID']['input'];
+  content?: InputMaybe<Scalars['String']['input']>;
+  published: Scalars['Boolean']['input'];
+  title: Scalars['String']['input'];
 };
 
 export type Query = {
@@ -158,7 +157,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<Record<PropertyKey, never>>;
   Post: ResolverTypeWrapper<Post>;
-  PostInput: ResolverTypeWrapper<PostInput>;
+  PostInput: PostInput;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
@@ -204,13 +203,6 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 };
 
-export type PostInputResolvers<ContextType = any, ParentType extends ResolversParentTypes['PostInput'] = ResolversParentTypes['PostInput']> = {
-  author?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  published?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-};
-
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   post?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<QueryPostArgs, 'id'>>;
   posts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
@@ -221,7 +213,6 @@ export type Resolvers<ContextType = any> = {
   CreatePostResponse?: CreatePostResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Post?: PostResolvers<ContextType>;
-  PostInput?: PostInputResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 
