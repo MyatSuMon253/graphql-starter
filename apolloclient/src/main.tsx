@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import { ApolloProvider } from "@apollo/client/react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import PostDetail from "./pages/PostDetail.tsx";
+import CreatePost from "./pages/CreatePost.tsx";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({ uri: "http://localhost:4000/" });
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/posts/create" element={<CreatePost />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>

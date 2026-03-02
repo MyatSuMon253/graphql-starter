@@ -87,6 +87,13 @@ export type DeletePostMutationVariables = Exact<{
 
 export type DeletePostMutation = { __typename?: 'Mutation', deletePost: boolean };
 
+export type CreatePostMutationVariables = Exact<{
+  input?: InputMaybe<PostInput>;
+}>;
+
+
+export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'CreatePostResponse', code: number, success: boolean, message: string, post?: { __typename?: 'Post', id: string, title: string, content?: string | null, published: boolean, author?: { __typename?: 'Author', name?: string | null } | null } | null } };
+
 export type PostQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
