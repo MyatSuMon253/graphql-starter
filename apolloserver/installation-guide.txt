@@ -56,3 +56,5 @@ npm install -D @graphql-codegen/cli @graphql-codegen/client-preset @graphql-code
 npm create vite@latest apolloclient --template react-ts 
 npm i graphql @apollo/client react-router
 npm i -D @graphql-codegen/cli 
+
+npm run generate
