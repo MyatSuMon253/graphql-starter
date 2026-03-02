@@ -74,3 +74,8 @@ export type Query = {
 export type QueryPostArgs = {
   id: Scalars['ID']['input'];
 };
+
+export type GetAllPostsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllPostsQueryQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, content?: string | null, author?: { __typename?: 'Author', id: string, email: string, name?: string | null } | null }> };
