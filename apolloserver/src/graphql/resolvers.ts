@@ -1,5 +1,10 @@
-import { PostInput, Resolvers } from "../types.ts";
-import { getPosts, getPost, createPost } from "../services/postServices.js";
+import { PostInput } from "../types.ts";
+import {
+  getPosts,
+  getPost,
+  createPost,
+  deletePost,
+} from "../services/postServices.js";
 
 export const resolvers = {
   Query: {
@@ -33,7 +38,14 @@ export const resolvers = {
           post: null,
         };
       }
-      return {};
+    },
+    deletePost: async (_: any, { id }: { id: string }) => {
+      try {
+        await deletePost(id);
+        return true;
+      } catch (error) {
+        return false;
+      }
     },
   },
 };

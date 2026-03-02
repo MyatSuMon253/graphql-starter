@@ -1,4 +1,3 @@
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "../../generated/prisma/client.ts";
 import { PostInput } from "../types.ts";
 
@@ -57,4 +56,8 @@ export const createPost = async (input: PostInput) => {
       },
     },
   });
+};
+
+export const deletePost = async (id: string) => {
+  return prisma.post.delete({ where: { id } });
 };
