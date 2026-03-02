@@ -1,10 +1,28 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
-createRoot(document.getElementById('root')!).render(
+import "./index.css";
+import App from "./App.tsx";
+import { ApolloProvider } from "@apollo/client/react";
+import { BrowserRouter, Route, Routes } from "react-router";
+
+const cache = new InMemoryCache();
+const link = new HttpLink({ uri: "http://localhost:4000/" });
+
+const client = new ApolloClient({
+  cache: cache,
+  link: link,
+});
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+        </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
   </StrictMode>,
-)
+);
