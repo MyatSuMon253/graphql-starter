@@ -79,3 +79,17 @@ export type GetAllPostsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPostsQueryQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, content?: string | null, author?: { __typename?: 'Author', id: string, email: string, name?: string | null } | null }> };
+
+export type DeletePostMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeletePostMutation = { __typename?: 'Mutation', deletePost: boolean };
+
+export type PostQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, title: string, content?: string | null, published: boolean, author?: { __typename?: 'Author', name?: string | null } | null } };

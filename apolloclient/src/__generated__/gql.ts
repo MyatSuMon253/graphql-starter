@@ -14,10 +14,14 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n  ": typeof types.GetAllPostsQueryDocument,
+    "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n": typeof types.GetAllPostsQueryDocument,
+    "\n    mutation DeletePost($id: ID!) {\n        deletePost(id: $id)\n    }\n": typeof types.DeletePostDocument,
+    "\n    query Post($id: ID!) {\n        post(id: $id) {\n            id\n            title\n            content\n            published\n            author {\n                name\n            }\n        }\n    }\n": typeof types.PostDocument,
 };
 const documents: Documents = {
-    "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n  ": types.GetAllPostsQueryDocument,
+    "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n": types.GetAllPostsQueryDocument,
+    "\n    mutation DeletePost($id: ID!) {\n        deletePost(id: $id)\n    }\n": types.DeletePostDocument,
+    "\n    query Post($id: ID!) {\n        post(id: $id) {\n            id\n            title\n            content\n            published\n            author {\n                name\n            }\n        }\n    }\n": types.PostDocument,
 };
 
 /**
@@ -37,7 +41,15 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n  "): (typeof documents)["\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n  "];
+export function gql(source: "\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n"): (typeof documents)["\nquery getAllPostsQuery {\n  posts {\n    id\n    title\n    content\n    author {\n      id\n      email\n      name\n    }\n  }\n}\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n    mutation DeletePost($id: ID!) {\n        deletePost(id: $id)\n    }\n"): (typeof documents)["\n    mutation DeletePost($id: ID!) {\n        deletePost(id: $id)\n    }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n    query Post($id: ID!) {\n        post(id: $id) {\n            id\n            title\n            content\n            published\n            author {\n                name\n            }\n        }\n    }\n"): (typeof documents)["\n    query Post($id: ID!) {\n        post(id: $id) {\n            id\n            title\n            content\n            published\n            author {\n                name\n            }\n        }\n    }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
