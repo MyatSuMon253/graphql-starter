@@ -50,4 +50,9 @@ http://localhost:5173/
 
 npm create vite@latest apolloclient -- --template react-ts
 npm install graphql @apollo/client
-npm install -D @graphql-codegen/cli @graphql-codegen/client-preset @graphql-codegen/typescript @graphql-codegen/typescript-operations
+npm install -D @graphql-codegen/cli @graphql-codegen/client-preset @graphql-codegen/typescript @graphql-codegen/typescript-operations 
+
+
+npm create vite@latest apolloclient --template react-ts 
+npm i graphql @apollo/client react-router
+npm i -D @graphql-codegen/cli 
