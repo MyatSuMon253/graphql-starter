@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { ApolloProvider } from "@apollo/client/react";
 import { BrowserRouter, Route, Routes } from "react-router";
+import PostDetail from "./pages/PostDetail.tsx";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({ uri: "http://localhost:4000/" });
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>

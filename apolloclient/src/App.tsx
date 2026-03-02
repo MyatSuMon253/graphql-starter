@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client/react";
 // import { gql } from "./__generated__";
 import { gql } from "@apollo/client";
+import PostCard from "./components/Post";
 
 export const POSTS = gql(`
 query getAllPostsQuery {
@@ -27,8 +28,8 @@ function App() {
   return (
     <>
       <h1>List of all posts</h1>
-      {data?.posts?.map((p: any) => (
-        <div className="post">{p.title}</div>
+      {data?.posts?.map((post: any) => (
+        <PostCard key={post.id} post={post} />
       ))}
     </>
   );
