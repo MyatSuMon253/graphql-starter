@@ -58,7 +58,7 @@ export type Post = {
 };
 
 export type PostInput = {
-  author: Scalars['ID']['input'];
+  authorId: Scalars['ID']['input'];
   content?: InputMaybe<Scalars['String']['input']>;
   published: Scalars['Boolean']['input'];
   title: Scalars['String']['input'];
